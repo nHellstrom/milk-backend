@@ -14,3 +14,10 @@ public class Product {
     public string type { get; set; } = null!;
     public int storage { get; set; } = 0;
 }
+
+public class ProductDTO {
+    public string? id { get; set; }
+    public string name { get; set; } = null!;
+    public string type { get; set; } = null!;
+    public int storage { get; set; } = 0;
+}

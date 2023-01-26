@@ -20,30 +20,31 @@ public class ProductController : ControllerBase {
         return await _mongoDBService.GetAsync();
     }
 
-    [HttpGet("{name}")]
-    public async Task<List<Product>> GetByName(string name) 
+    [HttpGet("{id}")]
+    public async Task<ProductDTO> GetByLegacyId(string id) 
     {
-        return await _mongoDBService.GetByName();
+        return await _mongoDBService.GetByLegacyId(id);
     }
+
   
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Product Product) 
-    {
-        await _mongoDBService.CreateAsync(Product);
-        return CreatedAtAction(nameof(Get), new { id = Product._id}, Product);
-    }
+    // [HttpPost]
+    // public async Task<IActionResult> Post([FromBody] Product Product) 
+    // {
+    //     await _mongoDBService.CreateAsync(Product);
+    //     return CreatedAtAction(nameof(Get), new { id = Product._id}, Product);
+    // }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product) 
-    {
-        await _mongoDBService.UpdateAsync(id, product);
-        return NoContent();
-    }
+    // [HttpPut("{id}")]
+    // public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product) 
+    // {
+    //     await _mongoDBService.UpdateQuantityAsync(id, product);
+    //     return NoContent();
+    // }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(string id) 
-    {
-        await _mongoDBService.DeleteAsync(id);
-        return NoContent();
-    }
+    // [HttpDelete("{id}")]
+    // public async Task<IActionResult> Delete(string id) 
+    // {
+    //     await _mongoDBService.DeleteAsync(id);
+    //     return NoContent();
+    // }
 }
