@@ -7,7 +7,7 @@ public class Product {
     [BsonRepresentation(BsonType.ObjectId)]
     public string? _id { get; set; }
 
-    // Legacy id
+    // Legacy id, not for sorting
     public string? id { get; set; }
 
     public string name { get; set; } = null!;

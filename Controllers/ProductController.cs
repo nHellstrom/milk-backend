@@ -26,26 +26,10 @@ public class ProductController : ControllerBase {
         return await _mongoDBService.GetByLegacyId(id);
     }
 
-  
-    // [HttpPost]
-    // public async Task<IActionResult> Post([FromBody] Product Product) 
-    // {
-    //     await _mongoDBService.CreateAsync(Product);
-    //     return CreatedAtAction(nameof(Get), new { id = Product._id}, Product);
-    // }
-
     [HttpPatch("Order/{id}")]
     public async Task<ProductDTO> UpdateProductQuantity(string id, [FromBody] int amount) 
     {
         Console.WriteLine("Amount from the client " + amount);
         return await _mongoDBService.UpdateQuantityAsync(id, amount);
-        // return NoContent();
     }
-
-    // [HttpDelete("{id}")]
-    // public async Task<IActionResult> Delete(string id) 
-    // {
-    //     await _mongoDBService.DeleteAsync(id);
-    //     return NoContent();
-    // }
 }
