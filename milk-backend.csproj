@@ -1,10 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>milk_backend</RootNamespace>
+    <UserSecretsId>168be5ab-0aee-4302-bf33-56d0ecac9100</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
