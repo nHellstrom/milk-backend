@@ -34,12 +34,13 @@ public class ProductController : ControllerBase {
     //     return CreatedAtAction(nameof(Get), new { id = Product._id}, Product);
     // }
 
-    // [HttpPut("{id}")]
-    // public async Task<IActionResult> UpdateProduct(string id, [FromBody] Product product) 
-    // {
-    //     await _mongoDBService.UpdateQuantityAsync(id, product);
-    //     return NoContent();
-    // }
+    [HttpPatch("Order/{id}")]
+    public async Task<ProductDTO> UpdateProductQuantity(string id, [FromBody] int amount) 
+    {
+        Console.WriteLine("Amount from the client " + amount);
+        return await _mongoDBService.UpdateQuantityAsync(id, amount);
+        // return NoContent();
+    }
 
     // [HttpDelete("{id}")]
     // public async Task<IActionResult> Delete(string id) 

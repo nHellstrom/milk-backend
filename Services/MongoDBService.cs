@@ -34,13 +34,17 @@ public class MongoDBService {
         await _productCollection.InsertOneAsync(product);
         return;
     }
-    // public async Task UpdateQuantityAsync(string id, int orderSize) 
-    // {
-    //     FilterDefinition<Product> filter = Builders<Product>.Filter.Eq("id", id);
-    //     UpdateDefinition<Product> update = Builders<Product>.Update.Set<Product>("storage",);
-    //     await _productCollection.UpdateOneAsync(filter, update);
-    //     return;
-    // }
+    public async Task<ProductDTO> UpdateQuantityAsync(string id, int amount) 
+    {
+        FilterDefinition<Product> filter = Builders<Product>.Filter.Eq("id", id);
+        UpdateDefinition<Product> update = Builders<Product>.Update.Inc("storage", -amount);
+        await _productCollection.UpdateOneAsync(filter, update);
+        // Product prod = await _productCollection.FindOneAndUpdateAsync(filter, update);
+        Product prod = await _productCollection.Find(filter).FirstAsync();
+        return ProductToDTO(prod);
+
+        // return;
+    }
 
     public async Task DeleteAsync(string id) 
     {
